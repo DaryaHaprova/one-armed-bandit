@@ -31,12 +31,11 @@ export default class App extends Controller {
         this.createReels();
         this.createButton();
         this.animate();
-        console.log("init");
         App.loadingElement.style.visibility = 'hidden';
     }
 
     createScene() {
-        this.background = new Background(this.app.loader.resources.background.texture);
+        this.background = new Background(this.app.loader.resources.background.texture, this.hideText.bind(this));
         this.stageAdd(this.background.container);
     }
 
@@ -51,6 +50,9 @@ export default class App extends Controller {
     }
     toogleButton() {
         this.button.buttonActiveToggle()
+    }
+    hideText(){
+        this.reels.clearText()
     }
 
 }

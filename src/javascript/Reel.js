@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 
 export default class Reel {
-    constructor(turn, resources){
+    constructor( resources){
         this.resources = resources;
         this.width = 236;
         this.height = 140;
@@ -23,8 +23,9 @@ export default class Reel {
         this.container = new PIXI.Container();
         this.container.position.x = this.position.x;
         this.container.position.y = this.position.y;
+        let reelIds = this.singleReel.map(item => item.id);
 
-        this.createTurn(turn);
+        this.createTurn(reelIds.sort(() => 0.5 - Math.random()));
         this.createReels();
 
     }
